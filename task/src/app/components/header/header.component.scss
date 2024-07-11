@@ -1,0 +1,96 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $black;
+  padding: 1.2em;
+  text-align: center;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo__circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $dark-grey;
+      border-radius: 50%;
+      padding: 0.8em;
+      cursor: pointer;
+
+      transition: background-color 0.1s ease-in;
+
+      &:hover {
+        background-color: $orange;
+      }
+    }
+
+    .logo__icon {
+      width: 4em;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+
+    .title__main,
+    .title__subtitle {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .title__main {
+      font-weight: $fw-500;
+
+      strong {
+        font-weight: $fw-700;
+      }
+    }
+
+    .title__subtitle {
+      font-weight: $fw-400;
+
+    }
+  }
+}
+
+// @import "../../../scss/variables";
+
+// :host {
+//   height: 120px;
+//   background-color: $black;
+// }
+
+// header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 100%;
+//   width: 100%;
+
+//   .logo {
+//     &__circle {
+//       width: 10em;
+//       height: 10em;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       background-color: $dark-grey;
+//       border-radius: 50%;
+//     }
+
+//     &__icon {
+//       height: 6em;
+//     }
+//   }
+// }

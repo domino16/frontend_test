@@ -1,0 +1,7 @@
+@import '../../../scss/variables';
+
+:host{
+    display: flex;
+    flex: 1 1 auto;
+    background-color:$dark-grey ;
+}

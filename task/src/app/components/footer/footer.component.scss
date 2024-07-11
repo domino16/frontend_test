@@ -1,0 +1,37 @@
+@import "../../../scss/variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  background-color: $very-dark-grey;
+  padding: 1em 4em;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer {
+  &__left {
+    width: 7.5em;
+    padding: 0.5em;
+    margin: 0;
+    border: 1px solid white;
+    transition: border-color 0.1s ease-in;
+
+    &:hover {
+      border-color: $orange;
+    }
+
+    .left__text {
+        margin: 0;
+        font-size: 1.8em;
+        color: ;
+    }
+  }
+}

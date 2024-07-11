@@ -1,5 +1,10 @@
 @import "mixins";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -14,6 +19,9 @@ body {
   }
 }
 
+body {
+  margin: 0;
+}
 
 @include desktop {
   body,

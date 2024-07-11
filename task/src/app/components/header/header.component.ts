@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-first-block',
+  selector: 'app-header',
   standalone: true,
   imports: [],
-  templateUrl: './first-block.component.html',
-  styleUrl: './first-block.component.scss',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class FirstBlockComponent {
+export class HeaderComponent {
 
 }
