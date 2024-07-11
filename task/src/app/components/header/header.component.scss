@@ -1,6 +1,12 @@
 @import "../../../scss/variables";
 @import "../../../scss/mixins";
 
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -59,7 +65,6 @@
 
     .title__subtitle {
       font-weight: $fw-400;
-
     }
   }
 }

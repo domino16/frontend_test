@@ -28,10 +28,60 @@ footer {
       border-color: $orange;
     }
 
-    .left__text {
+    .left {
+      &__text {
         margin: 0;
         font-size: 1.8em;
-        color: ;
+        line-height: 1.2em;
+        color: $white;
+      }
+    }
+  }
+
+  &__center {
+    position: relative;
+    font-size: 1.8em;
+    color: $dark-grey;
+
+    .center {
+      &__text {
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+
+          width: 2em;
+          height: 1px;
+          background-color: $dark-grey;
+        }
+
+        &::after {
+          left: calc(100% + 0.2em);
+        }
+
+        &::before {
+          right: calc(100% + 0.2em);
+        }
+      }
+    }
+  }
+
+  &__right {
+    position: relative;
+
+    .right {
+      &__button {
+        padding: 0.5em 5em;
+        font-size: 1.4rem;
+        color: $white;
+        background-color: transparent;
+        border: 1px solid $white;
+      }
+      &__dropdown {
+        color: $black;
+        background-color: $white;
+      }
     }
   }
 }
