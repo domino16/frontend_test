@@ -1,10 +1,10 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 :host {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 100px;
   background-color: $very-dark-grey;
   padding: 1em 4em;
 }
@@ -69,19 +69,115 @@ footer {
 
   &__right {
     position: relative;
+    display: flex;
+    align-items: center;
 
-    .right {
+    .dropdown {
+      display: inline-flex;
+      position: relative;
+      width: 100%;
+
       &__button {
-        padding: 0.5em 5em;
-        font-size: 1.4rem;
-        color: $white;
+        font-size: 1.1rem;
+        display: inline-flex;
+        border: 1px solid $light-grey;
+        font-weight: $fw-700;
+        border-radius: 4px;
+        padding: 1em 8em 1em 7.1em;
+        flex-grow: 1;
         background-color: transparent;
-        border: 1px solid $white;
+        color: $light-grey;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: border 0.1s ease-in, color 0.1s ease-in;
+
+        span {
+          position: relative;
+
+          &::after {
+            @include arrow-style();
+            top: 50%;
+            right: -1.8em;
+            transform: translateY(calc(-50% + 0.175em)) rotateZ(-45deg);
+          }
+        }
+
+        &:hover {
+          color: $white;
+          border-color: white;
+
+          span {
+            &::after {
+              border-color: white;
+            }
+          }
+        }
       }
-      &__dropdown {
-        color: $black;
-        background-color: $white;
+
+      &__input {
+        display: none;
       }
+
+      &__list {
+        position: absolute;
+        bottom: 100%;
+        border: 1px solid #ccc;
+        padding: 0;
+        margin: 0 0 3em 0;
+        box-shadow: 0 0 10px 2px rgba($color: $black, $alpha: 1);
+        background-color: #ffffff;
+        list-style-type: none;
+        font-weight: 600;
+        width: 100%;
+
+        li {
+          position: relative;
+          padding: 1em 2em;
+          cursor: pointer;
+          white-space: nowrap;
+          color: $very-dark-grey;
+          font-size: 1.1rem;
+          transition: color 0.1s ease-in, background-color 0.1s ease-in;
+
+          &:hover {
+            background-color: #f6f6f6;
+            color: $orange;
+          }
+
+          &::before {
+            @include arrow-style();
+            top: 50%;
+            left: 1.2em;
+            transform: translateY(calc(-50% + 0.175em)) rotateZ(0deg);
+          }
+        }
+      }
+
+      &__input + .dropdown__list {
+        display: none;
+      }
+
+      &__input:checked + .dropdown__list {
+        display: block;
+      }
+
+      &__input:checked + .dropdown__button {
+        scale: 4;
+        // TODO: make arrow turn when checked
+        // span {
+        //   &::after {
+        //     // transform: rotateZ(76deg);
+        //     color: red;
+        //     scale: 3;
+        //   }
+        // }
+      }
+    }
+  }
+
+  @include tablet {
+    .dropdown__button {
+      padding: 1em 5em 1em 3em;
     }
   }
 }

@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 :host {
   display: flex;
@@ -8,24 +9,37 @@
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 
   &__blocks {
     display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
     width: 100%;
 
     app-first-block,
-    app-second-block,
+    app-second-block {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
     app-third-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      
-      
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    @include tablet {
+      app-first-block,
+      app-second-block,
+      app-third-block {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        
+      }
     }
   }
 

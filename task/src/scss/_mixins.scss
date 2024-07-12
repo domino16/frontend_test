@@ -1,31 +1,31 @@
 @import "variables";
 
 @mixin mobile {
-  @media (max-width: #{$mobile}) {
+  @media (min-width: #{$mobile}) {
     @content;
   }
 }
 
 @mixin mobile-wide {
-  @media (max-width: #{$mobile-wide}) {
+  @media (min-width: #{$mobile-wide}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (max-width: #{$tablet}) {
+  @media (min-width: #{$tablet}) {
     @content;
   }
 }
 
 @mixin tablet-wide {
-  @media (max-width: #{$tablet-wide}) {
+  @media (min-width: #{$tablet-wide}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (max-width: #{$desktop}) {
+  @media (min-width: #{$desktop}) {
     @content;
   }
 }
@@ -34,4 +34,14 @@
   @media (min-width: #{$full-screen}) {
     @content;
   }
+}
+
+@mixin arrow-style($color: $light-grey) {
+  content: "";
+  position: absolute;
+  width: 0.7em;
+  aspect-ratio: 1/1;
+  border-top: 2px solid $color;
+  border-right: 2px solid $color;
+  transition: border-color 0.1s ease-in;
 }

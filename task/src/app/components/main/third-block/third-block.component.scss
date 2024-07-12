@@ -1,7 +1,16 @@
 @import "../../../../scss/variables";
 
-
 h3 {
-    font-size: 1.6em;
-    font-weight: $fw-700;
-    }
+  font-size: 1.6em;
+  font-weight: $fw-700;
+  margin-bottom: 3em;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+p {
+    font-size: 1.2em;
+    color: $light-grey;
+}

@@ -3,13 +3,26 @@
 h3 {
   font-size: 1.6em;
   font-weight: $fw-700;
+  margin-bottom: 3em;
 }
 
-.content{
+.content {
 
-&__button{
-    border: none;
+  &__button {
+    padding: 0.6em 2em;
+    margin: 1em;
+    color: $light-grey;
+    background: none;
+    border: 1px solid $white;
     border-radius: 3px;
-}
-    
+    transition-property: background-color, color;
+    transition-duration: .1s;
+    transition-timing-function: ease-in;
+    cursor: pointer;
+
+    &:hover{
+        color: $white;
+        background-color: $orange;
+    }
+  }
 }
