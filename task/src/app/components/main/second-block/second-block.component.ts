@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-second-block',
@@ -9,5 +10,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SecondBlockComponent {
+  private readonly dataService = inject(DataService);
 
+  onReplaceClick($event:MouseEvent){
+    this.dataService.handleReplaceBtnClick();
+  }
+
+  onAddClick($event:MouseEvent){
+    this.dataService.handleAddBtnClick();
+  }
 }

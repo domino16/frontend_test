@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,5 +10,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent {
+  private readonly dataService = inject(DataService)
+
+
+onResetClick(){
+this.dataService.resetPage();
+}
+
+
+onAddNameClick(){
+  this.dataService.handleAddNameToHeaderBtnClick();
+}
 
 }

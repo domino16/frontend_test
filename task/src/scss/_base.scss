@@ -10,6 +10,8 @@ html,
 body {
   font-family: $font-open-sans;
   font-size: $fs-10;
+  overflow-x: hidden;
+  max-width: 100dvw;
 }
 
 body {

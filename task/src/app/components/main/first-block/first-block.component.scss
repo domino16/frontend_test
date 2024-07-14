@@ -38,14 +38,13 @@ h3 {
       height: 0.6em;
       border-radius: 50%;
       transform: scale(0);
-      transition: 0.12s transform ease-in-out;
+      transition: 0.12s transform ease-out-out;
       box-shadow: inset 1em 1em $white;
       cursor: pointer;
     }
 
     &:checked::before {
       transform: scale(1);
-
     }
 
     &:checked ~ label {
@@ -57,13 +56,13 @@ h3 {
     text-align: left;
     width: 100%;
     margin-left: -3em;
-  
+
     padding: 1em 0 1em 3.6em;
     font-weight: $fw-300;
     cursor: pointer;
 
     border-radius: 3px;
-    transition: background-color 0.1s ease-in;
+    transition: background-color 0.1s ease-out;
 
     &:hover {
       background-color: rgba($color: $very-dark-grey, $alpha: 0.4);

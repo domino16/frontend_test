@@ -5,7 +5,11 @@
   display: flex;
   flex: 1 1 auto;
   background-color: $dark-grey;
-  padding: 5em 4em;
+  padding: 2em 1em;
+
+  @include mobile{
+    padding: 5em 4em;
+  }
 }
 
 .main {

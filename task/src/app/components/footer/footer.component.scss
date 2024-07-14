@@ -6,7 +6,12 @@
   align-items: center;
   width: 100%;
   background-color: $very-dark-grey;
-  padding: 1em 4em;
+  padding: 1em;
+  border-top: 2px solid black;
+
+  @include mobile {
+    padding: 1em 4em;
+  }
 }
 
 footer {
@@ -22,7 +27,7 @@ footer {
     padding: 0.5em;
     margin: 0;
     border: 1px solid white;
-    transition: border-color 0.1s ease-in;
+    transition: border-color 0.1s ease-out;
 
     &:hover {
       border-color: $orange;
@@ -40,6 +45,7 @@ footer {
 
   &__center {
     position: relative;
+    display: none;
     font-size: 1.8em;
     color: $dark-grey;
 
@@ -89,7 +95,7 @@ footer {
         color: $light-grey;
         cursor: pointer;
         white-space: nowrap;
-        transition: border 0.1s ease-in, color 0.1s ease-in;
+        transition: border 0.1s ease-out, color 0.1s ease-out;
 
         span {
           position: relative;
@@ -99,7 +105,7 @@ footer {
             top: 50%;
             right: -1.8em;
             transform: translateY(calc(-50% + 0.175em)) rotateZ(-45deg);
-            transition: transform 0.2s ease-in;
+            transition: transform 0.2s ease-out;
           }
         }
 
@@ -122,14 +128,18 @@ footer {
       &__list {
         position: absolute;
         bottom: 100%;
-        border: 1px solid #ccc;
         padding: 0;
         margin: 0 0 3em 0;
-        box-shadow: 0 0 10px 2px rgba($color: $black, $alpha: 1);
-        background-color: #ffffff;
+      
+        background-color: $white;
         list-style-type: none;
         font-weight: 600;
         width: 100%;
+        overflow: hidden;
+        max-height: 0;
+
+        transition: max-height 0.15s ease-out, opacity .15s ease-in;
+
 
         li {
           position: relative;
@@ -138,14 +148,14 @@ footer {
           white-space: nowrap;
           color: $very-dark-grey;
           font-size: 1.1rem;
-          transition: color 0.1s ease-in, background-color 0.1s ease-in;
+          transition: color 0.1s ease-out, background-color 0.1s ease-out;
 
           &::before {
             @include arrow-style();
             top: 50%;
             left: 1.2em;
             transform: translateY(-50%) rotateZ(45deg);
-            transition: border-color 0.1s ease-in;
+            transition: border-color 0.1s ease-out;
           }
 
           &:hover {
@@ -159,19 +169,18 @@ footer {
         }
       }
 
-      &__input + .dropdown__list {
-        display: none;
-      }
 
       &__input:checked + .dropdown__list {
-        display: block;
+        box-shadow: 0 0 10px 2px rgba($color: $black, $alpha: 1);
+        max-height: 80px;
       }
 
       &:has(.dropdown__input:checked) {
         .dropdown__button {
           span {
             &::after {
-              transform: translateY(calc(-50% - 0.175em)) rotateZ(45deg) rotate3d(1, 0, 0, 180deg);
+              transform: translateY(calc(-50% - 0.175em)) rotateZ(45deg)
+                rotate3d(1, 0, 0, 180deg);
             }
           }
         }
@@ -180,8 +189,14 @@ footer {
   }
 
   @include tablet {
-    .dropdown__button {
-      padding: 1em 5em 1em 3em;
+    &__center {
+      display: block;
+    }
+
+    .dropdown {
+      &__button {
+        padding: 1em 5em 1em 3em;
+      }
     }
   }
 }

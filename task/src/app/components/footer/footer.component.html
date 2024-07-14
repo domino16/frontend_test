@@ -18,8 +18,12 @@
       <input type="checkbox" class="dropdown__input" id="dropdown" />
 
       <ul class="dropdown__list">
-        <li class="dropdown__item">ZRESETUJ USTAWIENIA</li>
-        <li class="dropdown__item">POKAŻ DANE OSOBOWE</li>
+        <li (click)="onResetClick()" class="dropdown__item">
+          ZRESETUJ USTAWIENIA
+        </li>
+        <li (click)="onAddNameClick()" class="dropdown__item">
+          POKAŻ DANE OSOBOWE
+        </li>
       </ul>
     </label>
   </div>
