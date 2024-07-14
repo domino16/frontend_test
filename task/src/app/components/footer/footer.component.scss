@@ -8,10 +8,12 @@
   background-color: $very-dark-grey;
   padding: 1em;
   border-top: 2px solid black;
-
   @include mobile {
     padding: 1em 4em;
   }
+  overflow: clip;
+  overflow-clip-margin: 100vh;
+
 }
 
 footer {
@@ -23,14 +25,30 @@ footer {
 
 .footer {
   &__left {
+    position: relative;
     width: 7.5em;
     padding: 0.5em;
     margin: 0;
-    border: 1px solid white;
-    transition: border-color 0.1s ease-out;
+    color: $light-grey;
+    transition: color 0.12s ease-out;
+
 
     &:hover {
-      border-color: $orange;
+      color: $white;
+
+      &::after {
+        border-color: $orange;
+        transform: rotate(90deg);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid $light-grey;
+      transition: border-color 0.12s ease-out, transform 0.3s ease-out;
+      
     }
 
     .left {
@@ -38,7 +56,6 @@ footer {
         margin: 0;
         font-size: 1.8em;
         line-height: 1.2em;
-        color: $white;
       }
     }
   }
@@ -130,7 +147,7 @@ footer {
         bottom: 100%;
         padding: 0;
         margin: 0 0 3em 0;
-      
+
         background-color: $white;
         list-style-type: none;
         font-weight: 600;
@@ -138,8 +155,7 @@ footer {
         overflow: hidden;
         max-height: 0;
 
-        transition: max-height 0.15s ease-out, opacity .15s ease-in;
-
+        transition: max-height 0.15s ease-out, opacity 0.15s ease-in;
 
         li {
           position: relative;
@@ -168,7 +184,6 @@ footer {
           }
         }
       }
-
 
       &__input:checked + .dropdown__list {
         box-shadow: 0 0 10px 2px rgba($color: $black, $alpha: 1);
