@@ -2,21 +2,22 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  effect,
-  ElementRef,
   inject,
   OnDestroy,
   OnInit,
-  ViewChild,
+  signal,
+
+  WritableSignal,
 } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { Subscription } from 'rxjs';
 import { Content } from '../../../models/content';
+import { AlphabeticSortPipe } from '../../alphabetic-sort.pipe';
 
 @Component({
   selector: 'app-third-block',
   standalone: true,
-  imports: [],
+  imports: [AlphabeticSortPipe],
   templateUrl: './third-block.component.html',
   styleUrl: './third-block.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,17 +28,15 @@ export class ThirdBlockComponent implements OnInit, AfterViewInit, OnDestroy {
   replaceTextBtnListenerSubscription!: Subscription;
   addTextBtnListenerSubscription!: Subscription;
   usedIndexesArray: number[] = [];
-
-  @ViewChild('displayElement') displayElementRef!: ElementRef;
+  contentToViewArray: WritableSignal<Content[]> = signal([]);
 
   ngOnInit(): void {
     this.handleTextOnAddClick();
     this.handleTextOnReplaceClick();
-    
   }
 
   ngAfterViewInit(): void {
-    this.updateContent(this.dataService.contents[0].description);
+    this.contentToViewArray.update(() => [this.dataService.contents[0]]);
   }
 
   handleTextOnReplaceClick() {
@@ -57,7 +56,8 @@ export class ThirdBlockComponent implements OnInit, AfterViewInit, OnDestroy {
             break;
         }
 
-        this.updateContent(content!.description);
+        this.contentToViewArray.set([]) 
+        if (content) this.contentToViewArray.update(()=>[content]);
       });
   }
 
@@ -79,33 +79,13 @@ export class ThirdBlockComponent implements OnInit, AfterViewInit, OnDestroy {
         }
 
         content
-          ? this.appendContent(content.description)
-          : alert('Wszystkie teksty zostały użyte, Zastąp lub dodaj tekst');
+          ? this.contentToViewArray.update((array) => [...array, content])
+          : alert(
+              'Wszystkie możliwe do wylosowania teksty zostały użyte, Zastąp lub dodaj tekst'
+            );
       });
   }
 
-  updateContent(content: string) {
-    const displayElement = this.displayElementRef.nativeElement;
-    if (displayElement) {
-      while (displayElement.firstChild) {
-        displayElement.removeChild(displayElement.firstChild);
-      }
-
-      const newContent = document.createElement('div');
-      newContent.innerHTML = content;
-
-      displayElement.appendChild(newContent);
-    }
-  }
-
-  appendContent(content: string) {
-    const displayElement = this.displayElementRef.nativeElement;
-    if (displayElement) {
-      const newContent = document.createElement('div');
-      newContent.innerHTML = content;
-      displayElement.appendChild(newContent);
-    }
-  }
 
   ngOnDestroy(): void {
     this.addTextBtnListenerSubscription.unsubscribe();

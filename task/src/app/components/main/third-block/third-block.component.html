@@ -1,4 +1,7 @@
 
 <h3 class="block__h3">BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE Lorem ipsum dolor sit.</h3>
 
-<p #displayElement></p>
+
+@for(content of (contentToViewArray() | alphabeticSort); let idx = $index; track idx){
+<p>{{content.description}}</p>
+}

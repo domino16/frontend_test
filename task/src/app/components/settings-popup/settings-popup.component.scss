@@ -1,0 +1,43 @@
+@import "../../../scss/variables";
+
+:host {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  z-index: 2;
+}
+
+.popup {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  border-radius: 4px;
+  background-color: $very-dark-grey;
+
+  &__icon{
+
+    &--close{
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+        border: none;
+        background: none;
+        padding: 0.5em;
+        cursor: pointer;
+
+        svg{
+            transition: fill 0.12s ease-out;
+        }
+
+        &:hover{
+            svg{
+                fill: $orange;
+            }
+        }
+    }
+
+  }
+}

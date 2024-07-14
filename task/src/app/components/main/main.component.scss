@@ -2,6 +2,7 @@
 @import "../../../scss/mixins";
 
 :host {
+  position: relative;
   display: flex;
   flex: 1 1 auto;
   background-color: $dark-grey;
@@ -62,5 +63,27 @@
       right: 10%;
       border-top: 1px solid $white;
     }
+  }
+
+  &__settings{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+svg{
+  transition: stroke 0.12s ease-out, fill 0.12s ease-out;
+}
+
+&:hover{
+
+  svg{
+    stroke: $orange;
+    fill: $orange;
+  }
+}
+
   }
 }

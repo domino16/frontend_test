@@ -37,7 +37,7 @@
     }
 
     .logo__icon {
-      width: 4em;
+      width: 5em;
       padding: 0;
     }
   }
@@ -51,7 +51,7 @@
 
     .title__main,
     .title__subtitle {
-      font-size: 1.6rem;
+      font-size: 2rem;
       margin: 0;
     }
 
@@ -68,34 +68,3 @@
     }
   }
 }
-
-// @import "../../../scss/variables";
-
-// :host {
-//   height: 120px;
-//   background-color: $black;
-// }
-
-// header {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   height: 100%;
-//   width: 100%;
-
-//   .logo {
-//     &__circle {
-//       width: 10em;
-//       height: 10em;
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       background-color: $dark-grey;
-//       border-radius: 50%;
-//     }
-
-//     &__icon {
-//       height: 6em;
-//     }
-//   }
-// }
