@@ -7,7 +7,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { first, map, Observable, Subject, tap } from 'rxjs';
-import { Content } from '../models/content';
+import { Content } from '../components/models/content';
 
 @Injectable({
   providedIn: 'root',
@@ -167,6 +167,7 @@ export class DataService {
   }
 
   resetPage() {
+    this.fetchDataFromJson().subscribe(); 
     this.currentOption.set('first');
     this.contentToViewArray.set([this.contents[0]]);
     this.myName.set('');

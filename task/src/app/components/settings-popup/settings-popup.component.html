@@ -16,7 +16,8 @@
       </div>
     </li>
     } @else {
-    <div class="button-wrapper">
+    <div       appCloseComponentIfClickedOutside
+    (clickOutside)="editIndex = null" class="button-wrapper">
       <input class="popup__input" [(ngModel)]="editedContent" placeholder="Edytowana treść" />
       <button class="popup__button" (click)="saveEditedContent()">
         Zapisz

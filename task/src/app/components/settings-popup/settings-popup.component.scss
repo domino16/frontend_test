@@ -38,7 +38,6 @@
   }
 
   .button-wrapper {
-  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,7 +55,7 @@
     transition-timing-function: ease-out;
     cursor: pointer;
 
-    @include mobile-wide{
+    @include mobile-wide {
       padding: 0.4em 1.6em;
     }
 
@@ -69,7 +68,7 @@
   ul {
     display: inline-block;
     list-style: none;
-    max-width: 90%;
+    width: 90%;
     padding: 0;
   }
 
@@ -82,8 +81,8 @@
   }
 
   &__text {
-   max-width:fit-content;
-   overflow-wrap: anywhere;
+    max-width: fit-content;
+    overflow-wrap: anywhere;
     margin: 0;
   }
 
@@ -110,6 +109,7 @@
     margin-bottom: 1em;
 
     label {
+      margin-top: 1em;
       font-size: 1.2em;
     }
 

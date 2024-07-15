@@ -20,9 +20,13 @@
       <label class="dropdown">
         <div class="dropdown__button"><span>POKAŻ</span></div>
 
-        <input type="checkbox" class="dropdown__input" id="dropdown" />
+        <input [(ngModel)]="inputValue" type="checkbox" class="dropdown__input" id="dropdown" />
 
-        <ul class="dropdown__list">
+        <ul
+          appCloseComponentIfClickedOutside
+          (clickOutside)="closeDropdownIfClickedOutside()"
+          class="dropdown__list"
+        >
           <li (click)="onResetClick()" class="dropdown__item">
             ZRESETUJ USTAWIENIA
           </li>

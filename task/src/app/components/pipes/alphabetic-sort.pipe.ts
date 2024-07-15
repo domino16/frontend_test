@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Content } from '../models/content';
 
+
 @Pipe({
   name: 'alphabeticSort',
   standalone: true

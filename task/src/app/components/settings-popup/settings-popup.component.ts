@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { CloseComponentIfClickedOutsideDirective } from '../../directives/close-component-if-clicked-outside.directive';
-import { Content } from '../../models/content';
+import { Content } from '../models/content';
 import { FormsModule } from '@angular/forms';
 import {
   CdkDragDrop,
@@ -25,7 +25,7 @@ import { NgStyle } from '@angular/common';
     FormsModule,
     CdkDropList,
     CdkDrag,
-    NgStyle
+    CloseComponentIfClickedOutsideDirective,
   ],
   templateUrl: './settings-popup.component.html',
   styleUrl: './settings-popup.component.scss',
