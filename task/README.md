@@ -1,3 +1,14 @@
+### Zadanie rekrutacyjne do NabThat
+
+Witaj w moim repozytorium na GitHubie dedykowanym zadaniu rekrutacyjnemu dla NabThat!
+
+W tym repozytorium znajdziesz rozwiązanie zadania rekrutacyjnego dla NabThat. Wszystkie wymagania zostały z powodzeniem zaimplementowane, a dodatkowo została dodana funkcjonalność przeciągania i upuszczania (drag & drop) do edycji tablicy.
+
+### Live Demo
+
+Możesz zobaczyć działającą wersję projektu [tutaj](https://frontend-recruitment-task.web.app/).
+
+
 # Task
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
