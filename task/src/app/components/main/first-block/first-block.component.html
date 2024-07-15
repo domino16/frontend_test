@@ -1,38 +1,40 @@
-<h3>BLOK PIERWSZY</h3>
-<form [formGroup]="optionsForm">
-<div class="option">
-  <input
-    class="option__input"
-    type="radio"
-    id="first"
-    name="option"
-    value="first"
-    formControlName="option"
-  />
-  <label class="option__label" for="first">Opcja pierwsza</label>
-</div>
+<div class="form-block">
+  <h3 class="form-block__title">BLOK PIERWSZY</h3>
+  <form [formGroup]="optionsForm">
+    <div class="form-block__option option">
+      <input
+        class="option__input"
+        type="radio"
+        id="first"
+        name="option"
+        value="first"
+        formControlName="option"
+      />
+      <label class="option__label" for="first">Opcja pierwsza</label>
+    </div>
 
-<div  class="option">
-  <input
-    class="option__input"
-    type="radio"
-    id="second"
-    name="option"
-    value="second"
-    formControlName="option"
-  />
-  <label class="option__label" for="second">Opcja druga</label>
-</div>
+    <div class="form-block__option option">
+      <input
+        class="option__input"
+        type="radio"
+        id="second"
+        name="option"
+        value="second"
+        formControlName="option"
+      />
+      <label class="option__label" for="second">Opcja druga</label>
+    </div>
 
-<div  class="option">
-  <input
-    class="option__input"
-    type="radio"
-    id="third"
-    name="option"
-    value="third"
-    formControlName="option"
-  />
-  <label class="option__label" for="third">Opcja losowa</label>
+    <div class="form-block__option option">
+      <input
+        class="option__input"
+        type="radio"
+        id="third"
+        name="option"
+        value="third"
+        formControlName="option"
+      />
+      <label class="option__label" for="third">Opcja losowa</label>
+    </div>
+  </form>
 </div>
-</form>

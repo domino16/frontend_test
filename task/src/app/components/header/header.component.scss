@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: $black;
-  padding: 1.2em;
+  padding: 1.2rem;
   text-align: center;
 
   &__logo {
@@ -20,15 +20,14 @@
     align-items: center;
     justify-content: center;
 
-    .logo__circle {
+    &-circle {
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: $dark-grey;
       border-radius: 50%;
-      padding: 0.8em;
+      padding: 0.8rem;
       cursor: pointer;
-
       transition: background-color 0.1s ease-out;
 
       &:hover {
@@ -36,8 +35,8 @@
       }
     }
 
-    .logo__icon {
-      width: 5em;
+    &-icon {
+      width: 5rem;
       padding: 0;
     }
   }
@@ -49,13 +48,13 @@
     margin: 0;
     padding: 0;
 
-    .title__main,
-    .title__subtitle {
+    &-main,
+    &-subtitle {
       font-size: 2rem;
       margin: 0;
     }
 
-    .title__main {
+    &-main {
       font-weight: $fw-500;
 
       strong {
@@ -63,7 +62,7 @@
       }
     }
 
-    .title__subtitle {
+    &-subtitle {
       font-weight: $fw-400;
     }
   }

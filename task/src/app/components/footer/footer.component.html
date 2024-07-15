@@ -1,7 +1,7 @@
 <footer>
   <div class="footer__left">
-    <div class="left__helper">
-      <p class="left__text">
+    <div class="footer__left-helper">
+      <p class="footer__left-text">
         CSS <br />
         IS <br />
         AWESOME
@@ -10,29 +10,19 @@
   </div>
 
   <div class="footer__center">
-    <div class="center__helper">
-      <p class="center__text">nabthat</p>
+    <div class="footer__center-helper">
+      <p class="footer__center-text">nabthat</p>
     </div>
   </div>
 
   <div class="footer__right">
-    <div class="right__helper">
+    <div class="footer__right-helper">
       <label class="dropdown">
         <div class="dropdown__button"><span>POKAŻ</span></div>
-
         <input [(ngModel)]="inputValue" type="checkbox" class="dropdown__input" id="dropdown" />
-
-        <ul
-          appCloseComponentIfClickedOutside
-          (clickOutside)="closeDropdownIfClickedOutside()"
-          class="dropdown__list"
-        >
-          <li (click)="onResetClick()" class="dropdown__item">
-            ZRESETUJ USTAWIENIA
-          </li>
-          <li (click)="onAddNameClick()" class="dropdown__item">
-            POKAŻ DANE OSOBOWE
-          </li>
+        <ul appCloseComponentIfClickedOutside (clickOutside)="closeDropdownIfClickedOutside()" class="dropdown__list">
+          <li (click)="onResetClick()" class="dropdown__item">ZRESETUJ USTAWIENIA</li>
+          <li (click)="onAddNameClick()" class="dropdown__item">POKAŻ DANE OSOBOWE</li>
         </ul>
       </label>
     </div>

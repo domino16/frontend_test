@@ -1,17 +1,18 @@
 @import "../../../../scss/variables";
 
-h3 {
-  font-size: 1.6em;
-  font-weight: $fw-700;
-  margin-bottom: 3em;
+.block {
+  &__title {
+    font-size: 1.6rem;
+    font-weight: $fw-700;
+    margin-bottom: 4rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-p {
-    font-size: 1.2em;
+  &__content {
+    font-size: 1.3rem;
     color: $light-grey;
     margin: 0;
+  }
 }

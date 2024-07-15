@@ -1,9 +1,11 @@
 @import "../../../../scss/variables";
 
-h3 {
-  font-size: 1.6em;
-  font-weight: $fw-700;
-  margin-bottom: 3em;
+.form-block {
+  &__title {
+    font-size: 1.6em;
+    font-weight: $fw-700;
+    margin-bottom: 4rem;
+  }
 }
 
 .option {
@@ -47,7 +49,7 @@ h3 {
       transform: scale(1);
     }
 
-    &:checked ~ label {
+    &:checked ~ .option__label {
       font-weight: $fw-700;
     }
   }

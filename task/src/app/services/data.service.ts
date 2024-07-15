@@ -109,7 +109,7 @@ export class DataService {
       return null;
     }
 
-    const randomIndex = Math.floor(Math.random() * unusedContents.length);
+    const randomIndex = Math.floor(Math.random() * (unusedContents.length)) ;
     const randomContent = unusedContents[randomIndex];
     this.usedContentIds.push(randomContent.id);
     this.saveContents();
@@ -171,7 +171,7 @@ export class DataService {
     this.currentOption.set('first');
     this.contentToViewArray.set([this.contents[0]]);
     this.myName.set('');
-    this.usedContentIds = [];
+   this.resetUsedContent();
   }
 
   closeSettingsPopup() {
