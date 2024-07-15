@@ -42,7 +42,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-flow: nowrap;
   }
 
   &__button {
@@ -77,15 +76,14 @@
   &__item {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
+    justify-content: space-between;
     padding: 0.4em;
     cursor: move;
   }
 
   &__text {
    max-width:fit-content;
-   overflow-wrap: break-word;
-   word-wrap: break-word;
+   overflow-wrap: anywhere;
     margin: 0;
   }
 
