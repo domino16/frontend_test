@@ -15,6 +15,7 @@ import {
   CdkDrag,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-settings-popup',
@@ -24,6 +25,7 @@ import {
     FormsModule,
     CdkDropList,
     CdkDrag,
+    NgStyle
   ],
   templateUrl: './settings-popup.component.html',
   styleUrl: './settings-popup.component.scss',

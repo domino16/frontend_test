@@ -75,7 +75,7 @@ export class DataService {
   getViewedContents() {
     const data = localStorage.getItem(this.storageViewedContentKey);
     if (data) {
-      this.contentToViewArray.set(JSON.parse(data))
+      this.contentToViewArray.set(JSON.parse(data));
     } else {
       this.contentToViewArray.set([this.contents[0]]);
     }
@@ -170,6 +170,7 @@ export class DataService {
     this.currentOption.set('first');
     this.contentToViewArray.set([this.contents[0]]);
     this.myName.set('');
+    this.usedContentIds = [];
   }
 
   closeSettingsPopup() {

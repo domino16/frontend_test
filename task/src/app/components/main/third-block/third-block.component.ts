@@ -1,16 +1,10 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnDestroy,
-  OnInit,
-  signal,
-
   WritableSignal,
 } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { Subscription } from 'rxjs';
 import { Content } from '../../../models/content';
 import { AlphabeticSortPipe } from '../../alphabetic-sort.pipe';
 
