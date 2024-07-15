@@ -13,10 +13,10 @@ export class SecondBlockComponent {
   private readonly dataService = inject(DataService);
 
   onReplaceClick($event:MouseEvent){
-    this.dataService.handleReplaceBtnClick();
+    this.dataService.onReplaceBtnClick();
   }
 
   onAddClick($event:MouseEvent){
-    this.dataService.handleAddBtnClick();
+    this.dataService.onAddBtnClick();
   }
 }

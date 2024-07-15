@@ -4,26 +4,37 @@
   class="popup"
 >
   <h3>Zarządzanie treściami:</h3>
-  <ul>
-    @for(content of contents; track content.id; let i = $index){
-    <li>
-      {{ content.description }}
-      <button (click)="editContent(i)">Edytuj</button>
-      <button (click)="deleteContent(i)">Usuń</button>
+  <ul cdkDropList (cdkDropListDropped)="drop($event)">
+    @for(content of contents; track i ; let i = $index){
+    @if(editIndex!== i){
+
+    <li class="popup__item" cdkDrag>
+      <p class="popup__text">{{ content.description }}</p>
+      <div class="button-wrapper">
+        <button class="popup__button" (click)="editContent(i)">Edytuj</button>
+        <button class="popup__button" (click)="deleteContent(i)">Usuń</button>
+      </div>
     </li>
+    } @else {
+    <div class="button-wrapper">
+      <input class="popup__input" [(ngModel)]="editedContent" placeholder="Edytowana treść" />
+      <button class="popup__button" (click)="saveEditedContent()">
+        Zapisz
+      </button>
+    </div>
+    }
+    <div class="popup__divider"></div>
     }
   </ul>
-  <div>
-    <input [(ngModel)]="newContent" placeholder="Nowa treść" />
-    <button (click)="addContent()">Dodaj</button>
+  <div class="popup__add">
+    <label for="addContent">Dodaj nową treść:</label>
+    <input class="popup__input"
+      name="addContent"
+      [(ngModel)]="newContent"
+      placeholder="Nowa treść"
+    />
+    <button class="popup__button" (click)="addContent()">Dodaj</button>
   </div>
-
-  @if(editIndex !== null){
-  <div>
-    <input [(ngModel)]="editedContent" placeholder="Edytowana treść" />
-    <button (click)="saveEditedContent()">Zapisz</button>
-  </div>
-  }
 
   <button (click)="closePopup()" class="popup__icon--close">
     <svg viewBox="0 0 512 512" width="2em" height="2em" fill="#fff">

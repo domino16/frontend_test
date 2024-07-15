@@ -19,7 +19,7 @@ this.dataService.resetPage();
 
 
 onAddNameClick(){
-  this.dataService.handleAddNameToHeaderBtnClick();
+  this.dataService.onAddNameToHeaderBtnClick();
 }
 
 }

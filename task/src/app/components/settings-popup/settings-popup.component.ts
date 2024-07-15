@@ -8,17 +8,28 @@ import {
 import { DataService } from '../../services/data.service';
 import { CloseComponentIfClickedOutsideDirective } from '../../directives/close-component-if-clicked-outside.directive';
 import { Content } from '../../models/content';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDrag,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-settings-popup',
   standalone: true,
-  imports: [CloseComponentIfClickedOutsideDirective, FormsModule],
+  imports: [
+    CloseComponentIfClickedOutsideDirective,
+    FormsModule,
+    CdkDropList,
+    CdkDrag,
+  ],
   templateUrl: './settings-popup.component.html',
   styleUrl: './settings-popup.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SettingsPopupComponent implements OnInit{
+export class SettingsPopupComponent implements OnInit {
   private readonly dataService = inject(DataService);
 
   closePopup() {
@@ -32,7 +43,6 @@ export class SettingsPopupComponent implements OnInit{
   ngOnInit() {
     this.refreshContents();
   }
-
 
   addContent() {
     if (this.newContent.trim()) {
@@ -63,5 +73,15 @@ export class SettingsPopupComponent implements OnInit{
 
   refreshContents() {
     this.contents = this.dataService.getContents();
+  }
+
+  drop(event: CdkDragDrop<Content[]>) {
+    this.editIndex = null;
+
+    moveItemInArray(
+      this.dataService.contents,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

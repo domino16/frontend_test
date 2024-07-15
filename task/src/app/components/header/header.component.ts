@@ -14,6 +14,6 @@ import { AsyncPipe } from '@angular/common';
 export class HeaderComponent{
 private readonly dataService = inject(DataService)
 
-name = this.dataService.addNameToHeaderEvent$
+name = this.dataService.myName
 
 }

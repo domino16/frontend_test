@@ -1,30 +1,36 @@
 <footer>
   <div class="footer__left">
-    <p class="left__text">
-      CSS <br />
-      IS <br />
-      AWESOME
-    </p>
+    <div class="left__helper">
+      <p class="left__text">
+        CSS <br />
+        IS <br />
+        AWESOME
+      </p>
+    </div>
   </div>
 
   <div class="footer__center">
-    <p class="center__text">nabthat</p>
+    <div class="center__helper">
+      <p class="center__text">nabthat</p>
+    </div>
   </div>
 
   <div class="footer__right">
-    <label class="dropdown">
-      <div class="dropdown__button"><span>POKAŻ</span></div>
+    <div class="right__helper">
+      <label class="dropdown">
+        <div class="dropdown__button"><span>POKAŻ</span></div>
 
-      <input type="checkbox" class="dropdown__input" id="dropdown" />
+        <input type="checkbox" class="dropdown__input" id="dropdown" />
 
-      <ul class="dropdown__list">
-        <li (click)="onResetClick()" class="dropdown__item">
-          ZRESETUJ USTAWIENIA
-        </li>
-        <li (click)="onAddNameClick()" class="dropdown__item">
-          POKAŻ DANE OSOBOWE
-        </li>
-      </ul>
-    </label>
+        <ul class="dropdown__list">
+          <li (click)="onResetClick()" class="dropdown__item">
+            ZRESETUJ USTAWIENIA
+          </li>
+          <li (click)="onAddNameClick()" class="dropdown__item">
+            POKAŻ DANE OSOBOWE
+          </li>
+        </ul>
+      </label>
+    </div>
   </div>
 </footer>

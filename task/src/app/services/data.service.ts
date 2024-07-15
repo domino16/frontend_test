@@ -1,5 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import {
+  effect,
+  inject,
+  Injectable,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { first, map, Observable, Subject, tap } from 'rxjs';
 import { Content } from '../models/content';
 
@@ -9,25 +15,25 @@ import { Content } from '../models/content';
 export class DataService {
   private readonly http = inject(HttpClient);
 
-  private addClickSubject = new Subject<void>();
-  private replaceClickSubject = new Subject<void>();
-  private resetPageSubject = new Subject<void>();
-  private addNameToHeaderSubject = new Subject<string>();
   private usedContentIds: number[] = [1, 2];
 
-  addClickEvent$ = this.addClickSubject.asObservable();
-  replaceClickEvent$ = this.replaceClickSubject.asObservable();
-  resetPageClickEvent$ = this.resetPageSubject.asObservable();
-  addNameToHeaderEvent$ = this.addNameToHeaderSubject.asObservable();
+  isSettingsPopupOpen: WritableSignal<boolean> = signal(false);
+  contentToViewArray: WritableSignal<Content[]> = signal([]); // viewed content in third block
+  currentOption: WritableSignal<'first' | 'second' | 'third'> = signal('first');
+  myName: WritableSignal<string> = signal('');
 
   jsonPath = 'src/assets/task.json';
-  storageKey = 'contentData';
-  contents: Content[] = [];
-  currentOption: WritableSignal<'first' | 'second' | 'third'> = signal('first');
-  myName = 'Dominik Pietrzyk';
+  storageContentKey = 'contentData';
+  storageViewedContentKey = 'viewedContentData';
+  contents: Content[] = []; //all content in storage
+
+  contentToViewArrayEffect = effect(() => {
+    this.saveViewedContents();
+  });
 
   constructor() {
     this.loadContents();
+    this.getViewedContents();
   }
 
   fetchDataFromJson(): Observable<Content[]> {
@@ -35,27 +41,44 @@ export class DataService {
       map((data) => data.items),
       tap((contents) => {
         this.contents = contents;
+        this.contentToViewArray.set([this.contents[0]]);
         this.saveContents();
       })
     );
   }
 
   loadContents() {
-    const data = localStorage.getItem(this.storageKey);
-    this.replaceClickSubject.next();
+    const data = localStorage.getItem(this.storageContentKey);
     if (data) {
       this.contents = JSON.parse(data);
+      this.contentToViewArray.set([this.contents[0]]);
     } else {
       this.fetchDataFromJson().subscribe();
     }
   }
 
   saveContents() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.contents));
+    localStorage.setItem(this.storageContentKey, JSON.stringify(this.contents));
   }
 
   getContents(): Content[] {
     return this.contents;
+  }
+
+  saveViewedContents() {
+    localStorage.setItem(
+      this.storageViewedContentKey,
+      JSON.stringify(this.contentToViewArray())
+    );
+  }
+
+  getViewedContents() {
+    const data = localStorage.getItem(this.storageViewedContentKey);
+    if (data) {
+      this.contentToViewArray.set(JSON.parse(data))
+    } else {
+      this.contentToViewArray.set([this.contents[0]]);
+    }
   }
 
   addContent(content: string) {
@@ -98,21 +121,62 @@ export class DataService {
     this.saveContents();
   }
 
-  handleReplaceBtnClick() {
-    this.replaceClickSubject.next();
+  onReplaceBtnClick() {
+    this.resetUsedContent();
+    let content: Content | null;
+    switch (this.currentOption()) {
+      case 'first':
+        content = this.contents[0];
+        break;
+      case 'second':
+        content = this.contents[1];
+        break;
+      case 'third':
+        content = this.getRandomContent();
+        break;
+    }
+
+    this.contentToViewArray.set([]);
+    if (content) this.contentToViewArray.update(() => [content]);
   }
 
-  handleAddBtnClick() {
-    this.addClickSubject.next();
+  onAddBtnClick() {
+    let content: Content | null;
+    switch (this.currentOption()) {
+      case 'first':
+        content = this.contents[0];
+        break;
+      case 'second':
+        content = this.contents[1];
+        break;
+      case 'third':
+        content = this.getRandomContent();
+
+        break;
+    }
+
+    content
+      ? this.contentToViewArray.update((array) => [...array, content])
+      : alert(
+          'Wszystkie możliwe do wylosowania teksty zostały użyte, Zastąp lub dodaj tekst'
+        );
   }
 
-  handleAddNameToHeaderBtnClick() {
-    this.addNameToHeaderSubject.next('Dominik Pietrzyk');
+  onAddNameToHeaderBtnClick() {
+    this.myName.set('Dominik Pietrzyk');
   }
 
   resetPage() {
-    this.currentOption.set('first')
-    this.replaceClickSubject.next();
-    this.addNameToHeaderSubject.next('');
+    this.currentOption.set('first');
+    this.contentToViewArray.set([this.contents[0]]);
+    this.myName.set('');
+  }
+
+  closeSettingsPopup() {
+    this.isSettingsPopupOpen.set(false);
+  }
+
+  openSettingsPopup() {
+    this.isSettingsPopupOpen.set(true);
   }
 }

@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 :host {
   position: fixed;
@@ -8,36 +9,172 @@
   justify-content: center;
   backdrop-filter: blur(3px);
   z-index: 2;
+  font-size: 1.6rem;
 }
 
 .popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  width: 800px;
-  height: 600px;
+  width: 95dvw;
+  min-height: 80dvh;
+  max-height: 90dvh;
   border-radius: 4px;
   background-color: $very-dark-grey;
+  overflow: auto;
 
-  &__icon{
+  @include tablet {
+    max-width: 80dvw;
+  }
 
-    &--close{
-        position: absolute;
-        right: 0.5em;
-        top: 0.5em;
-        border: none;
-        background: none;
-        padding: 0.5em;
-        cursor: pointer;
+  @include desktop {
+    max-width: 60dvw;
+  }
 
-        svg{
-            transition: fill 0.12s ease-out;
-        }
+  h3 {
+    font-size: 2rem;
+    text-align: center;
+  }
 
-        &:hover{
-            svg{
-                fill: $orange;
-            }
-        }
+  .button-wrapper {
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: nowrap;
+  }
+
+  &__button {
+    padding: 0.4em 0.8em;
+    margin: 0.4em;
+    color: $light-grey;
+    background: none;
+    border: 1px solid $white;
+    border-radius: 3px;
+    transition-property: background-color, color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+
+    @include mobile-wide{
+      padding: 0.4em 1.6em;
     }
 
+    &:hover {
+      color: $white;
+      background-color: $orange;
+    }
   }
+
+  ul {
+    display: inline-block;
+    list-style: none;
+    max-width: 90%;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    padding: 0.4em;
+    cursor: move;
+  }
+
+  &__text {
+   max-width:fit-content;
+   overflow-wrap: break-word;
+   word-wrap: break-word;
+    margin: 0;
+  }
+
+  &__input {
+    font-family: "Roboto", sans-serif;
+    color: $white;
+    font-size: 1em;
+    padding: 0.6em 1em;
+    border-radius: 0.2em;
+    background-color: $dark-grey;
+    border: none;
+    width: 100%;
+
+    border-bottom: 0.3rem solid transparent;
+  }
+
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    width: 80%;
+    margin-bottom: 1em;
+
+    label {
+      font-size: 1.2em;
+    }
+
+    .popup__button {
+      font-size: 1em;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $light-grey;
+    margin: 0 auto;
+  }
+
+  &__icon {
+    &--close {
+      position: absolute;
+      right: 0.5em;
+      top: 0.5em;
+      border: none;
+      background: none;
+      padding: 0.5em;
+      cursor: pointer;
+
+      svg {
+        transition: fill 0.12s ease-out;
+      }
+
+      &:hover {
+        svg {
+          fill: $orange;
+        }
+      }
+    }
+  }
+}
+
+.cdk-drag-preview {
+  color: $white;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  .button-wrapper {
+    display: flex;
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.popup__item:last-child {
+  border: none;
+}
+
+ul.cdk-drop-list-dragging .popup__item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
